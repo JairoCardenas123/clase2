@@ -1,4 +1,4 @@
-import { getClientes } from "./API.js";
+import { getClientes,nuevoCliente } from "./API.js";
 
 addEventListener('DOMContentLoaded',()=>{
     cargaClientes();
@@ -23,4 +23,29 @@ async function cargaClientes(){
       </tr>
       `
     })
+}
+
+const formulario = document.getElementById('registrar')
+
+formulario.addEventListener('submit',nuevoClientes)
+
+function nuevoClientes(e){
+    e.preventDefault();
+    const id_constructora=document.getElementById("id").value
+    const nombre_constructora=document.getElementById("constructora").value
+    const nit_constructora=document.getElementById("nit").value
+    const nombre_representante=document.getElementById("representante").value
+    const email_contacto=document.getElementById("email").value
+    const telefono_contacto=document.getElementById("tel").value
+
+    const registro ={
+        id_constructora,
+        nombre_constructora,
+        nit_constructora,
+        nombre_representante,
+        email_contacto,
+        telefono_contacto
+    }
+
+    console.log(registro);
 }
