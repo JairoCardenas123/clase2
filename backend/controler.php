@@ -20,6 +20,11 @@ switch($_GET["op"]){
         $datos=$alquilar->get_clientes();
         echo json_encode($datos);
     break;
+
+    case "insert":
+        $data=$alquilar->insert_clientes($body['$id_constructora'],$body['nombre_constructora'],$body['nit_constructora'],$body['nombre_representante'],$body['email_contacto'],$body['telefono_contacto']);
+        echo json_encode("los datos se ingresaron Correctamente");
+    break;    
 }
 
 
