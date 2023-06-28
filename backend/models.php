@@ -12,12 +12,26 @@ require_once("conectar.php");
 class Alquilar extends Conectar{
     public function get_clientes(){
         try {
+            $conectar=parent::Conexion();
+            parent::set_name();
+            $stm=$conectar->prepare("SELECT * FROM constructoras");
+            $stm -> execute();
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return $e -> getMessage();
+        }
+    }
+}
+
+
+/* class Alquilar extends Conectar{
+    public function get_clientes(){
+        try {
             $Conectar=parent::Conexion();
             parent::set_name();
             $stm=$Conectar->prepare("SELECT * FROM constructoras");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_ASSOC);
-
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -38,5 +52,5 @@ class Alquilar extends Conectar{
         return $stm->fetchAll(PDO::FETCH_ASSOC);
         
     }
-}
+} */
 ?>
